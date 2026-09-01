@@ -11,5 +11,5 @@ https://forms.gle/4x8xQvyZcV8F74DY9
 Para poder compilarlo con g++:
 
 ```bash
-g++ -Wall -std=c++20 ejercicio1.cpp -o ejercicio1.out
+g++ -Wall -std=c++20 Actividad1.cpp -o a.out
 
