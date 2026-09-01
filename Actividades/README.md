@@ -13,3 +13,10 @@ Para poder compilarlo con g++:
 ```bash
 g++ -Wall -std=c++20 Actividad1.cpp -o a.out
 
+```
+
+Recuerdo que usas Mac, así que para que amarre (Lo puedas ejecutar, ya tras compilarlo, anotando en la terminal:
+
+```bash
+./a.out
+```
