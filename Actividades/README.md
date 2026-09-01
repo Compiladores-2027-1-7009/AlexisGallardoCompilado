@@ -6,3 +6,10 @@ En este directorio pueden agregar los ejercicios prácticos de las actividades d
 
 1. Formulario de Repaso C++:
 https://forms.gle/4x8xQvyZcV8F74DY9
+
+2. El programa del ejercicio de completar el Codigo de la imagen.
+Para poder compilarlo con g++:
+
+```bash
+g++ -Wall -std=c++20 ejercicio1.cpp -o ejercicio1.out
+
