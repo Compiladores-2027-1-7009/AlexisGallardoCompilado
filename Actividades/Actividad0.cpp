@@ -1,4 +1,4 @@
-//  Actividad1.cpp
+//  Actividad0.cpp
 //
 //  Created by Alexis Gallardo on 01/09/26.
 //
