@@ -150,7 +150,7 @@ Regresa Hola mundo ! y el Resultado : 28.274401
 9. Quite el comentario de la macro _#define PI_ en el código fuente original y conteste lo siguiente:
 <ol type="a">
   <li> Genere nuevamente el archivo.i. De preferencia asigne un nuevo nombre.</li>
-  *(Paso realizado en la terminal ejecutando cpp)*
+  *Se llama programa2.i*
   <li> ¿Cambia en algo la ejecución final? </li>
   En el primer programa el preprocesador usaba el valor del #else (3.1416), por lo que el cálculo daba exactamente 28.274401. Al usar ahora el
   valor real y más preciso de la macro PI, el resultado de la multiplicación cambia a nivel de decimales, dándonos un resultado final en la pantalla mucho más exacto (28.274334).
@@ -187,6 +187,6 @@ Con esta práctica me quedo mas claro como funciona de verdad el procesamiento d
 </ul>
 
 <b>En conclusión:</b>
-aber jugado con la macro de PI en el punto 9 (la cual cambio los decimales del resultado final) y luego crear mi programa con las banderas de descuento, me enseno que las directivas del preprocesador son herramientas utiles para automatizar cosas y configurar el codigo antes de compilarlo. Fue una buena practica para entender que pasa detrás de escena en la terminal de Linux :p
+Haber jugado con la macro de PI en el punto 9 (la cual cambio los decimales del resultado final) y luego crear mi programa con las banderas de descuento, me enseno que las directivas del preprocesador son herramientas utiles para automatizar cosas y configurar el codigo antes de compilarlo. Fue una buena practica para entender que pasa detras de escena en la terminal de Linux :p
 
 [^1]: Pueden consultar la lista de directivas en su documentación en línea: [CPP - Index of directives](https://gcc.gnu.org/onlinedocs/cpp/Index-of-Directives.html##Index-of-Directives). O bien, revisar la entrada para este preprocesador en la herramienta man en Linux: `$ man cpp`
