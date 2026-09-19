@@ -1,4 +1,7 @@
-<<<<<<< HEAD
+# Directorio de Actividades
+
+En este directorio pueden agregar los ejercicios prácticos de las actividades del curso.
+
 ## Actividades
 
 1. Formulario de Repaso C++:
@@ -11,13 +14,6 @@ Para poder compilarlo con g++:
 g++ -Wall -std=c++20 Actividad1.cpp -o a.out
 ```
 
-=======
-# Directorio de Actividades
 
-En este directorio pueden agregar los ejercicios prácticos de las actividades del curso.
 
-## Actividades
 
-1. Formulario de Repaso C++:
-https://forms.gle/4x8xQvyZcV8F74DY9
->>>>>>> template/main
