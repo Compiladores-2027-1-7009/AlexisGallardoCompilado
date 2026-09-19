@@ -51,15 +51,10 @@ printf ("Resultado : %f\n", mi_area);
 return 0;
 }
 ```
-<<<<<<< HEAD
-=======
-
->>>>>>> template/main
 3. Use el siguiente comando: `cpp programa.c programa.i`
 Revise el contenido de _programa.i_ y conteste lo siguiente:
 <ol type="a">
   <li>¿Qué ocurre cuando se invoca el comando <i>cpp</i> con esos argumentos?</li>
-<<<<<<< HEAD
   Cuando se hace eso con esos argumentos, basicamente es pedirle al cpp (al preprocesador c) que tome como argumento el programa.c y que
   genere el programa.i. El cual al verlo se pueden ver cosas bastante familiares (como int, return 0, char, etc.), tambien que es demasiado
   extenso, mucho mas que el programa.c. Con lo que hemos visto en clase, sabemos que el preprocesador solo prepara el texto para dejarselo
@@ -80,13 +75,6 @@ Revise el contenido de _programa.i_ y conteste lo siguiente:
   dejarlo unificado en un solo archivo
   <li>¿A qué etapa corresponde este proceso?</li>
   A la etapa de preprocesamiento
-=======
-  <li>¿Qué similitudes encuentra entre los archivos <i>programa.c</i> y <i>programa.i</i>?</li>
-  <li>¿Qué pasa con las macros y los comentarios del código fuente original en <i>programa.i</i>?</li>
-  <li>Compare el contenido de <i>programa.i</i> con el de <i>stdio.h</i> e indique de forma general las similitudes entre ambos
-  archivos.</li>
-  <li>¿A qué etapa corresponde este proceso?</li>
->>>>>>> template/main
 </ol>
 
 ---
@@ -94,7 +82,6 @@ Revise el contenido de _programa.i_ y conteste lo siguiente:
 4. Ejecute la siguiente instrucción: ``gcc -Wall -S programa.i``
 <ol type="a">
   <li>¿Para qué sirve la opción <i>-Wall</i>?</li>
-<<<<<<< HEAD
   Para decirle a gcc que debe activar todos los avisos o advertencias posibles sobre nuestro codigo. Lo que nos debe ayudar a detectar malas
   practicas o posibles errores logicos que aunque dejen compilar el programa podrian causar problemas al ejecutarse.
   <li>¿Qué le indica a gcc la opción <i>-S</i>?</li>
@@ -104,11 +91,6 @@ Revise el contenido de _programa.i_ y conteste lo siguiente:
   Contiene nuestras intrucciones de codigo traducidas a ensamblador. Su extension es .s
   <li>¿A qué etapa corresponde este comando?</li>
   Etapa de compilacion
-=======
-  <li>¿Qué le indica a gcc la opción <i>-S</i>?</li>
-  <li>¿Qué contiene el archivo de salida y cuál es su extensión?</li>
-  <li>¿A qué etapa corresponde este comando?</li>
->>>>>>> template/main
 </ol>
 
 ---
@@ -116,7 +98,6 @@ Revise el contenido de _programa.i_ y conteste lo siguiente:
 5. Ejecute la siguiente instrucción: `as programa.s -o programa.o`
 <ol type="a">
   <li> Antes de revisarlo, indique cuál es su hipótesis sobre lo que debe contener el archivo con extensión  <i>.o</i>. </li>
-<<<<<<< HEAD
   Por la o, me imagino que es el codigo en codigo objeto, por lo tanto debe de haber una cochinada de simbolos inentendibles jajaja
   <li> Diga de forma general qué contiene el archivo <i>programa.o</i> y por qué se visualiza de esa manera. </li>
   No lo podia abrir hasta usar emacs, pero en efecto, contiene codigo maquina binario e instrucciones que el procesador puede entender
@@ -126,18 +107,12 @@ Revise el contenido de _programa.i_ y conteste lo siguiente:
   Al assembler (Ensamblador) del sistema
   <li> ¿A qué etapa corresponde la llamada a este programa? </li>
   A la etapa de ensamblado
-=======
-  <li> Diga de forma general qué contiene el archivo <i>programa.o</i> y por qué se visualiza de esa manera. </li>
-  <li> ¿Qué programa se invoca con  <i>as</i>? </li>
-  <li> ¿A qué etapa corresponde la llamada a este programa? </li>
->>>>>>> template/main
 </ol>
 
 ---
 
 6. Encuentre la ruta de los siguientes archivos en el equipo de trabajo:
 * ld-linux-x86-64.so.2
-<<<<<<< HEAD
   `/lib64/ld-linux-aarch64.so.1`
 * Scrt1.o (o bien, crt1.o)
   `/usr/lib64/Scrt1.o`
@@ -149,13 +124,6 @@ Revise el contenido de _programa.i_ y conteste lo siguiente:
   *No requerida*
 * crtn.o
   `/usr/lib64/crtn.o`
-=======
-* Scrt1.o (o bien, crt1.o)
-* crti.o
-* crtbeginS.o
-* crtendS.o
-* crtn.o
->>>>>>> template/main
 
 ---
 
@@ -166,7 +134,6 @@ ld -o ejecutable -dynamic-linker /lib/ld-linux-x86-64.so.2 /usr/lib/Scrt1.o /usr
 
 <ol type="a">
   <li> En caso de que el comando ld mande errores, investigue como enlazar un programa utilizando el comando <i>ld</i>. Y proponga una posible solución para llevar a cabo este proceso con éxito. </li>
-<<<<<<< HEAD
   Al principio, el comando ld manual generó un ejecutable que al correrlo lanzaba el error cannot execute: required file not found. Ocurrió porque el enlazador apuntaba a una ruta incorrecta del sistema. Investigando descubri que en mi arquitectura ARM of 64 bits, la ruta real es /usr/lib/ld-linux-aarch64.so.1. Mi solución fue corregir la ruta exacta en el comando ld o, de forma más eficiente, utilizar gcc programa.o -o executable
 
   <li> Describa el resultado obtenido al ejecutar el comando anterior. </li>
@@ -178,32 +145,19 @@ ld -o ejecutable -dynamic-linker /lib/ld-linux-x86-64.so.2 /usr/lib/Scrt1.o /usr
 8. Una vez que se enlazó el código máquina relocalizable, podemos ejecutar el programa con la siguiente instrucción en la terminal: ```./ejecutable``` <p>
 Regresa Hola mundo ! y el Resultado : 28.274401
 
-=======
-  <li> Describa el resultado obtenido al ejecutar el comando anterior. </li>
-</ol>
-
----
-8. Una vez que se enlazó el código máquina relocalizable, podemos ejecutar el programa con la siguiente
-instrucción en la terminal: ```./ejecutable```
->>>>>>> template/main
 ---
 
 9. Quite el comentario de la macro _#define PI_ en el código fuente original y conteste lo siguiente:
 <ol type="a">
   <li> Genere nuevamente el archivo.i. De preferencia asigne un nuevo nombre.</li>
-<<<<<<< HEAD
   *Se llama programa2.i*
   <li> ¿Cambia en algo la ejecución final? </li>
   En el primer programa el preprocesador usaba el valor del #else (3.1416), por lo que el cálculo daba exactamente 28.274401. Al usar ahora el
   valor real y más preciso de la macro PI, el resultado de la multiplicación cambia a nivel de decimales, dándonos un resultado final en la pantalla mucho más exacto (28.274334).
-=======
-  <li> ¿Cambia en algo la ejecución final? </li>
->>>>>>> template/main
 </ol>
 
 ---
 
-<<<<<<< HEAD
 10. Escribe un segundo programa en lenguaje **_C_** en el que agregue 4 directivas del preprocesador de _**C**_ (_cpp_)[^1]. Las directivas elegidas deben jugar algún papel en el significado del programa, ser distintas entre sí y diferentes de las utilizadas en el primer programa (aunque no están prohibidas si las requieren). 
 <ol type="a">
     <li>Explique su utilidad general y su función en particular para su programa. (Cree el programa IVA.c)</li>
@@ -215,21 +169,11 @@ Las directivas funcionaron de la siguiente manera:
   <li><b>#define DESCUENTO_ACTIVO:</b> Su utilidad es servir como una bandera o interruptor de configuración. En el programa, sirvió para avisarle al preprocesador que queríamos activar una oferta especial en la tienda.</li>
   <li><b>#ifdef / #else / #endif:</b> Su utilidad es la compilación condicional, o sea, decidir que partes del codigo se quedan y cuales se borran segun las banderas activadas. En el programa, sirvió para evaluar si existía la bandera del descuento; como si estaba activa, el preprocesador metio al archivo final la formula con la rebaja del 10% y borro por completo el codigo del #else.</li>
 </ul>
-=======
-10. Escribe un segundo programa en lenguaje **_C_** en el que agregue 4 directivas del preprocesador
-de _**C**_ (_cpp_)[^1]. Las directivas elegidas deben jugar algún papel en el significado del programa, ser distintas entre sí y
-diferentes de las utilizadas en el primer programa (aunque no están prohibidas si las requieren). 
-<ol type="a">
-    <li>Explique su utilidad
-general y su función en particular para su programa.</li>
-</ol>
->>>>>>> template/main
 
 ---
 
 11. Redacte un informe detallado con sus resultados y conclusiones.
 
-<<<<<<< HEAD
 Con esta práctica me quedo mas claro como funciona de verdad el procesamiento de un codigo en C. Estamos tan acostumbrados a compilar que uno puede pensar que compilar es solo presionar un boton o meter un comando rapido y ya, ten tu resultado, pero con todo lo que hice en esta practica, pude ver que el codigo pasa por una linea de produccion de cuatro etapas:
 
 <ul>
@@ -244,7 +188,5 @@ Con esta práctica me quedo mas claro como funciona de verdad el procesamiento d
 
 <b>En conclusión:</b>
 Haber jugado con la macro de PI en el punto 9 (la cual cambio los decimales del resultado final) y luego crear mi programa con las banderas de descuento, me enseno que las directivas del preprocesador son herramientas utiles para automatizar cosas y configurar el codigo antes de compilarlo. Fue una buena practica para entender que pasa detras de escena en la terminal de Linux :p
-=======
->>>>>>> template/main
 
 [^1]: Pueden consultar la lista de directivas en su documentación en línea: [CPP - Index of directives](https://gcc.gnu.org/onlinedocs/cpp/Index-of-Directives.html##Index-of-Directives). O bien, revisar la entrada para este preprocesador en la herramienta man en Linux: `$ man cpp`
