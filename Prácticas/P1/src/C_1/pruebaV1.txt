@@ -1,0 +1,6 @@
+int x = 10;
+float y = 3.1416;
+if (x)
+    while (y)
+        x = x - 1;
+

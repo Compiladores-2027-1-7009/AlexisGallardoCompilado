@@ -1,0 +1,4 @@
+_var1, contador_total;
+100 2.5e-3 45.0
+(a + b) * (c / d)
+

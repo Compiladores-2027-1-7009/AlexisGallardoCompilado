@@ -116,11 +116,25 @@ e. Ejecutar mediante: ```./nombreEjecutable```
 
 #### Ejercicios 
 1. ¿Qué ocurre si en la primera sección se quitan las llaves al nombre de la macro letra? (0.5 pts)
+Pues que Flex ya no va a interpretar a letra como la macro `[a-zA-Z]`, sino como la secuencia de caracteres "letr" seguida de una o más letras "a" (letra, letraa, ...). Las llaves nos sirven para que Flex expanda el contenido de una macro declarada previamente.
+
 2. ¿Qué ocurre si en la segunda sección se quitan las llaves a las macros? (0.5 pts)
+Que Flex literalmente va a buscar esas palabras en el texto de entrada (espacio, palabra, digito, digitoo, ...).
 3. ¿Cómo se escribe un comentario en flex? (0.5 pts)
+* **En la sección de declaraciones:** Lo importante es que la línea comience con un espacio o tabulación, utilizando los bloques estándar `/* ... */`, o bien colocando el código dentro del bloque `%` y `%}`.
+* **En la sección de reglas:** Dentro del bloque de la acción léxica `{ /* comentario */ }`, o en líneas con una tabulación previa usando `/* ... */`.
+
 4. ¿Qué se guarda en yytext? (0.5 pts)
+Contiene un apuntador a una cadena de caracteres terminada en nulo (`char*`) que guarda el lexema exacto que coincide con la expresión regular de la regla activada.
+
 5. ¿Qué pasa al ejecutar el programa e introducir cadenas de caracteres y de dígitos por la consola? (0.5 pts)
+1ro es importante tener en mente que Flex aplica la regla de maxima coincidencia ("cuando varias expresiones regulares coinciden con el texto de entrada, el analizador siempre seleccionará el patrón que consuma la mayor cantidad de caracteres").
+* **Cadenas de solo caracteres:** Si solo introduzco cadenas de caracteres me va a imprimir "Encontre una palabra: cadena-de-caracteres-escrita".
+* **Cadenas de solo dígitos:** Para el caso de cadenas de solo digitos, va a imprimr "Encontre un numero: cadena-de-digitos-escrita".
+* **Cadenas mixtas:** Para el caso que introduzcamos una mixta, dependera de como la escribamos, pero es practicamente similar a los 2 anteriores casos, va por secciones de la cadena completa, si ve que hay una subcadena de letras, imprime "Encontre una palabra: subcadena-de-letras", si despues seguian numeros, abajo de la impresion anterior imprimira que encontro esa subcadena de numeros. Por ejemplo: si le damos la cadena abc123: "Encontre una palabra: abc" y abajo "Encontre una palabra: 123". Los espacios y saltos de linea se consumen silenciosamente. 
 6. ¿Qué ocurre si introducimos caracteres como "\*" en la consola? (0.5 pts)
+Se activa la "regla por defecto" de Flex. Cualquier carácter que no coincida con ninguna de las reglas definidas no se descarta, sino que se imprime directamente tal cual en la salida estándar (`stdout`) sin ningún mensaje de acompañamiento.
+
 7. Modificar al código anterior en un archivo nuevo, de tal manera que reconozca lo siguiente: (2 pts)
     1. La expresión regular para los hexadecimales en lenguaje C++.
     2. 5 palabras reservadas del lenguaje C++.
@@ -194,6 +208,30 @@ $ ./compiler prueba
 #### Ejercicios
 
 8. Describir el conjunto de terminales y la expresión regular que reconoce a cada uno  en _lexer.ll_. (2 pts)
+
+#### Conjunto de terminales y expresiones regulares:
+
+| Terminal / Token | ID (`tokens.hpp`) | Expresión Regular en _lexer.ll_ | Descripción |
+| :--- | :---: | :--- | :--- |
+| `+` | `MAS` (1) | `"+"` | Operador aritmético de suma |
+| `-` | `MENOS` (2) | `"-"` | Operador aritmético de resta |
+| `*` | `MUL` (3) | `"*"` | Operador aritmético de multiplicación |
+| `/` | `DIV` (4) | `"/"` | Operador aritmético de división |
+| `=` | `ASIG` (5) | `"="` | Operador de asignación |
+| `(` | `LPAR` (6) | `"("` | Paréntesis izquierdo de apertura |
+| `)` | `RPAR` (7) | `")"` | Paréntesis derecho de cierre |
+| `,` | `COMA` (8) | `","` | Delimitador coma |
+| `;` | `PYC` (9) | `";"` | Delimitador punto y coma |
+| Identificador | `ID` (10) | `{LETRA}{ALFANUM}*` | Nombres de variables o funciones que inician con letra o guion bajo |
+| `if` | `IF` (11) | `"if"` | Palabra reservada de control de flujo condicional |
+| `int` | `INT` (12) | `"int"` | Palabra reservada para tipo de dato entero |
+| `while` | `WHILE` (13) | `"while"` | Palabra reservada de ciclo o bucle |
+| `else` | `ELSE` (14) | `"else"` | Palabra reservada de ramificación alternativa |
+| `float` | `FLOAT` (15) | `"float"` | Palabra reservada para tipo de dato en punto flotante |
+| Número (constante) | `NUMERO` (16) | `{NUM_REAL}\|{NUM_ENTERO}` | Literales numéricos enteros o reales con notación científica |
+| Espacios en blanco | `ESP` (17) / Ignorado | `{ESPACIO}+` | Espacios, tabuladores y saltos de línea |
+
+
 9. Generar acciones léxicas para cada terminal de nuestro lenguaje en _Lexer.cpp_, de modo que se muestre en pantalla la salida esperada con el archivo _prueba_. (2 pts)
 10. Crear un _Makefile_. (1 pt)
 
@@ -201,9 +239,8 @@ $ ./compiler prueba
 #### Extras
 
 11. Documentar el código. (0.25pts)
-12. Proponer 4 archivos de prueba nuevos, 2 válidos y 2 inválidos. (0.25pts)
-
-
-
-
-
+12. Proponer 4 archivos de prueba nuevos, 2 válidos y 2 inválidos.(0.25pts)
+* `pruebaV1.txt` (`int`, `float`, `if`, `while`, son validos)
+* `pruebaV2.txt` (identificadores con guiones bajos, expresiones con operadores aritmeticos y constantes en notación científica (`e`).
+* `pruebaInv1.txt` (Contiene `$`, `@`, que no son validos)
+* `pruebaInv2.txt` (Contiene `#`, `"`, que no son validos) 
