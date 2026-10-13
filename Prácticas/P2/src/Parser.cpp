@@ -80,7 +80,7 @@ void Parser::tipo() {
     sentencia();
     sentencias_p();
   }
-\/** sentencias_p -> sentencia sentencias_p | epsilon */
+/** sentencias_p -> sentencia sentencias_p | epsilon */
   void Parser::sentencias_p() {
     if (token == t_id || token == t_if || token == t_while) {
       sentencia();
