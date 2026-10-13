@@ -1,23 +1,21 @@
 CXX?=clang++
-EXE=compiler
+EXE=analyzer
 CXXDEBUG= -g -Wall
 CXXSTD=-std=c++14
 CXXFLAGS= -Wno-deprecated-register -O0 $(CXXDEBUG) $(CXXSTD)
-
-CPPOBJ= main Parser ./AL/Lexer
-
+CPPOBJ= main Parser Lexer
 FILES= $(addsuffix .cpp, $(CPPOBJ))
 OBJS = $(addsuffix .o, $(CPPOBJ))
-
-CLEANLIST = $(OBJS) $(EXE)
-
+CLEANLIST = $(OBJS) $(EXE) Lexer.cpp
 
 .PHONY: all
-all: wc
+all: build
 
-wc: $(FILES)
-	$(MAKE) $(OBJS)
+build: Lexer.cpp $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(EXE) $(OBJS)
+
+Lexer.cpp: lexer.ll
+	flex++ lexer.ll
 
 .PHONY: clean
 clean:

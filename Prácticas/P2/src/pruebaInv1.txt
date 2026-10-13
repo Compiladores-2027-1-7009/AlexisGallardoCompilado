@@ -1,0 +1,3 @@
+int a $ b;
+float precio = 99.9
+a = 1;

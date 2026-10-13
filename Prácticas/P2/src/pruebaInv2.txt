@@ -1,0 +1,3 @@
+int var;
+else
+  var = 10;
