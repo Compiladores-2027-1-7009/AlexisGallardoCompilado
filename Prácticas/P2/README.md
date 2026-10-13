@@ -72,3 +72,4 @@ Para la gramática G = ( N, Σ, P, S), descrita por las siguientes producciones:
 8. Documentar el código. (0.25pts)
 9. Proponer 4 archivos de prueba nuevos, 2 válidos y 2 inválidos. (0.25pts)
 10. Modificar el Makefile para poder simplificar el proceso de compilación de la práctica. (1pt)
+    #### TODAS LAS PREGUNTAS SERÁN ABORDADAS EN ParteTeorica.md
