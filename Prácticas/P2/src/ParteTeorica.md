@@ -17,13 +17,19 @@ Para la gramática G = ( N, Σ, P, S), descrita por las siguientes producciones:
 :   
 
 * **$N$:**
-  $$N = \{\text{programa, declaraciones, declaracion, tipo, lista\_var, sentencias, sentencia, expresion}\}$$
+```math
+N = \{\text{programa, declaraciones, declaracion, tipo, lista\_var, sentencias, sentencia, expresion}\}
+```
 
 * **$\Sigma$:**
-  $$\Sigma = \{\text{int, float, if, else, while, identificador, numero, };, \text{,}, =, +, -, *, /, (, )\}$$
+```math
+\Sigma = \{\text{int, float, if, else, while, identificador, numero, };, \text{,}, =, +, -, *, /, (, )\}
+```
 
 * **$S$:**
-  $$S = \text{programa}$$
+```math
+S = \text{programa}
+```
 
 
 2. Mostrar en el archivo el proceso de eliminación de ambigüedad o justificar, en caso de no ser necesario. (1 pts.).
@@ -31,14 +37,15 @@ Para la gramática G = ( N, Σ, P, S), descrita por las siguientes producciones:
 La producción de **expresión** es ambigua, no define ni la precedencia ni la asociatividad de los operadores matemáticos, lo que nos permitiria construir muchos árboles sintácticos válidos para una misma cadena (como por ejemplo: `a + b * c`).   
 
 Asi que toca jerarquizar las operaciones creando nuevos **N**:
-* **\(E\)**: para suma/resta
-* **\(T\)**: para multiplicación/división
-* **\(F\)**: para paréntesis y valores crudos
+* **$E$**: para suma/resta
+* **$T$**: para multiplicación/división
+* **$F$**: para paréntesis y valores crudos
 
 
-\[\begin{aligned} E &\rightarrow E + T \mid E - T \mid T \\ T &\rightarrow T * F \mid T / F \mid F \\ F &\rightarrow ( E ) \mid \text{identificador} \mid \text{numero} \end{aligned}\]
+```math
+\begin{aligned} E &\rightarrow E + T \mid E - T \mid T \\ T &\rightarrow T * F \mid T / F \mid F \\ F &\rightarrow ( E ) \mid \text{identificador} \mid \text{numero} \end{aligned}
+```
 
-sentencia
 3. Mostrar en el archivo el proceso de eliminación de la recursividad izquierda o justificar, en caso de no ser necesario. (1 pts.)
 
 El análisis sintáctico falla y entra en ciclos infinitos si existen reglas recursivas por la izquierda. Por lo que toca usar la regla de transformación para corregir las producciones.   
@@ -50,10 +57,12 @@ $$\begin{aligned}
 \end{aligned}$$
 
 #### lista_var ($\alpha = \text{, identificador}$, $\beta = \text{identificador}$):
-$$\begin{aligned}
+```math
+\begin{aligned}
 \text{lista\_var} &\rightarrow \text{identificador \ \ lista\_var'} \\
 \text{lista\_var'} &\rightarrow \text{, identificador \ \ lista\_var'} \mid \epsilon
-\end{aligned}$$
+\end{aligned}
+```
 
 #### sentencias ($\alpha = \text{sentencia}$, $\beta = \text{sentencia}$):
 $$\begin{aligned}
@@ -82,10 +91,13 @@ Cada alternativa empieza con un token distinto ($+$, $-$ o vacío). Asi que no h
 
 5. Mostrar en el archivo los nuevos conjuntos _N_ y _P_. (0.5 pts.)
 
-$$N = \{\text{programa, declaraciones, declaraciones', declaracion, tipo, lista\_var, lista\_var', sentencias, sentencias', sentencia, } E, E', T, T', F\}$$
+```math
+N = \{\text{programa, declaraciones, declaraciones', declaracion, tipo, lista\_var, lista\_var', sentencias, sentencias', sentencia, } E, E', T, T', F\}
+```
 
 #### ($P$):
-$$\begin{aligned}
+```math
+\begin{aligned}
 \text{programa} &\rightarrow \text{declaraciones \ \ sentencias} \\
 \text{declaraciones} &\rightarrow \text{declaracion \ \ declaraciones'} \\
 \text{declaraciones'} &\rightarrow \text{declaracion \ \ declaraciones'} \mid \epsilon \\
@@ -103,5 +115,5 @@ E' &\rightarrow + \ T E' \mid - \ T E' \mid \epsilon \\
 T &\rightarrow F T' \\
 T' &\rightarrow * \ F T' \mid / \ F T' \mid \epsilon \\
 F &\rightarrow ( \ E \ ) \mid \text{identificador} \mid \text{numero}
-\end{aligned}$$
-
+\end{aligned}
+```
