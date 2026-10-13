@@ -16,6 +16,7 @@ namespace C_1
   {
   }
 
+ /** programa -> declaraciones sentencias */
   void Parser::programa(){
     declaraciones();
     sentencias();
@@ -27,11 +28,13 @@ namespace C_1
   /**                                                                    **/
   /************************************************************************/
 
+/** declaraciones -> declaracion declaraciones_p */
 void Parser::declaraciones() {
     declaracion();
     declaraciones_p();
   }
 
+/** declaraciones_p -> declaracion declaraciones_p | epsilon */
   void Parser::declaraciones_p() {
     if (token == t_int || token == t_float) {
       declaracion();
@@ -39,13 +42,15 @@ void Parser::declaraciones() {
     }
   }
 
+/** declaracion -> tipo lista_var ; */
   void Parser::declaracion() {
     tipo();
     lista_var();
     match(t_pyc);
   }
 
-  void Parser::tipo() {
+/** tipo -> int | float */
+void Parser::tipo() {
     if (token == t_int) {
       match(t_int);
     } else if (token == t_float) {
@@ -55,11 +60,13 @@ void Parser::declaraciones() {
     }
   }
 
+/** lista_var -> identificador lista_var_p */
   void Parser::lista_var() {
     match(t_id);
     lista_var_p();
   }
 
+/** lista_var_p -> , identificador lista_var_p | epsilon */
   void Parser::lista_var_p() {
     if (token == t_coma) {
       match(t_coma);
@@ -68,11 +75,12 @@ void Parser::declaraciones() {
     }
   }
 
+/** sentencias -> sentencia sentencias_p */
   void Parser::sentencias() {
     sentencia();
     sentencias_p();
   }
-
+\/** sentencias_p -> sentencia sentencias_p | epsilon */
   void Parser::sentencias_p() {
     if (token == t_id || token == t_if || token == t_while) {
       sentencia();
@@ -80,6 +88,7 @@ void Parser::declaraciones() {
     }
   }
 
+/** sentencia -> identificador = E ; | if ( E ) sentencias else sentencias | while ( E ) sentencias */
   void Parser::sentencia() {
     if (token == t_id) {
       match(t_id);
@@ -105,11 +114,13 @@ void Parser::declaraciones() {
     }
   }
 
+/**  E -> T E_p */
   void Parser::E() {
     T();
     E_p();
   }
 
+/** E_p -> + T E_p | - T E_p | epsilon */
   void Parser::E_p() {
     if (token == t_suma) {
       match(t_suma);
@@ -122,11 +133,13 @@ void Parser::declaraciones() {
     }
   }
 
+/** T -> F T_p */
   void Parser::T() {
     F();
     T_p();
   }
 
+/** T_p -> * F T_p | / F T_p | epsilon */
   void Parser::T_p() {
     if (token == t_mult) {
       match(t_mult);
@@ -139,6 +152,7 @@ void Parser::declaraciones() {
     }
   }
 
+/** F -> ( E ) | identificador | numero */
   void Parser::F() {
     if (token == t_pizq) {
       match(t_pizq);
@@ -153,6 +167,7 @@ void Parser::declaraciones() {
     }
   }
 
+/** verifica que el token actual coincida con el esperado y avanza en la entrada */
   void Parser::match(int expected) {
     if (token == expected) {
       token = eat();
