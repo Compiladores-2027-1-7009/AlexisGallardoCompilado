@@ -244,7 +244,7 @@ Para construir la tabla $M[A, a]$ aplicamos el algoritmo de construcción $LL(1)
 | 26 | $F \rightarrow \text{numero}$ | `{ numero }` | No | — |
 | 27 | $F \rightarrow ( E )$ | `{ ( }` | No | — |
 
-> **Nota sobre `sentencias'`:** Al no existir delimitadores de bloque (`{ }`) en las reglas de `if` y `while`, se presenta un conflicto `FIRST/FOLLOW` en `sentencias'` con los terminales `{ identificador, if, while }` entre las producciones **12** y **13**. Para que el analizador sea determinista y consuma todas las sentencias consecutivas, se prioriza la producción **12** (`sentencias' → sentencia sentencias'`) para `{ identificador, if, while }` y se deja la producción **13** (`ε`) exclusivamente para `{ else, EOF }`.
+> **Pequeña nota respecto `sentencias'`:** Como no existen delimitadores de bloque (`{ }`) en las reglas de `if` y `while`, se presenta un conflicto `FIRST/FOLLOW` en `sentencias'` con los terminales `{ identificador, if, while }` entre las producciones **12** y **13**. Para que el analizador sea determinista y consuma todas las sentencias consecutivas, se prioriza la producción **12** para `{ identificador, if, while }` y se deja la producción **13** exclusivamente para `{ else, EOF }`.
 
 #### Tabla de Análisis Sintáctico Predictivo LL(1)
 *(Los números corresponden al índice de cada producción en $P'$)*
