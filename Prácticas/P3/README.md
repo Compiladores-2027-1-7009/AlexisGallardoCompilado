@@ -85,3 +85,5 @@ Para la gramática G = ( N, Σ, P, S), descrita por las siguientes producciones:
 
 13. Documentar el código. (0.25pts)
 14. Proponer 4 archivos de prueba nuevos, 2 válidos y 2 inválidos. (0.25pts)
+
+#### TODAS LAS PREGUNTAS SERÁN ABORDADAS EN ParteTeorica.md
