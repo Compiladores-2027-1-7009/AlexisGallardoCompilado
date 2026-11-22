@@ -220,12 +220,12 @@ Para construir la tabla $M[A, a]$ aplicamos el algoritmo de construcción $LL(1)
 | 2 | $\text{declaraciones} \rightarrow \text{declaracion \ declaraciones'}$ | `{ int, float }` | No | — |
 | 3 | $\text{declaraciones'} \rightarrow \text{declaracion \ declaraciones'}$ | `{ int, float }` | No | — |
 | 4 | $\text{declaraciones'} \rightarrow \epsilon$ | `{ ε }` | Sí | `{ identificador, if, while }` |
-| 5 | $\text{declaracion} \rightarrow \text{tipo \ lista\_var} \ ;$ | `{ int, float }` | No | — |
+| 5 | $\text{declaracion} \rightarrow \text{tipo \ lista\\_var} \ ;$ | `{ int, float }` | No | — |
 | 6 | $\text{tipo} \rightarrow \text{int}$ | `{ int }` | No | — |
 | 7 | $\text{tipo} \rightarrow \text{float}$ | `{ float }` | No | — |
-| 8 | $\text{lista\_var} \rightarrow \text{identificador \ lista\_var'}$ | `{ identificador }` | No | — |
-| 9 | $\text{lista\_var'} \rightarrow , \ \text{identificador \ lista\_var'}$ | `{ , }` | No | — |
-| 10 | $\text{lista\_var'} \rightarrow \epsilon$ | `{ ε }` | Sí | `{ ; }` |
+| 8 | $\text{lista\\_var} \rightarrow \text{identificador \ lista\\_var'}$ | `{ identificador }` | No | — |
+| 9 | $\text{lista\\_var'} \rightarrow , \ \text{identificador \ lista\\_var'}$ | `{ , }` | No | — |
+| 10 | $\text{lista\\_var'} \rightarrow \epsilon$ | `{ ε }` | Sí | `{ ; }` |
 | 11 | $\text{sentencias} \rightarrow \text{sentencia \ sentencias'}$ | `{ identificador, if, while }` | No | — |
 | 12 | $\text{sentencias'} \rightarrow \text{sentencia \ sentencias'}$ | `{ identificador, if, while }` | No | — |
 | 13 | $\text{sentencias'} \rightarrow \epsilon$ | `{ ε }` | Sí | `{ $, else, identificador, if, while }` |
